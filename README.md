@@ -267,3 +267,6 @@ See our [CONTRIBUTING](CONTRIBUTING.md) guide.
 - [FFmpeg API Documentation](https://ffmpeg.org/doxygen/4.0/index.html)
 - [FFmpeg Wiki](https://trac.ffmpeg.org/wiki/WikiStart)
 - [FFmpeg External Library Licenses](https://www.ffmpeg.org/doxygen/4.0/md_LICENSE.html)
+
+### 19. build Demo
+./android.sh --enable-gpl --enable-libvidstab --enable-rubberband --enable-x264 --enable-x265 --enable-xvidcore --enable-android-media-codec --enable-android-zlib --enable-kvazaar --enable-lame --enable-libaom --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libwebp --enable-opencore-amr --enable-openh264 --enable-opus --enable-speex --enable-twolame --enable-vo-amrwbenc --enable-shine --enable-snappy --enable-soxr --enable-sdl --disable-arm-v7a-neon
