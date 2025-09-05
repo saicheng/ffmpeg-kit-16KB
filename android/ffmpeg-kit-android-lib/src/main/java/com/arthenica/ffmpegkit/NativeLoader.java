@@ -33,7 +33,8 @@ import java.util.Locale;
  * <p>Responsible of loading native libraries.
  */
 public class NativeLoader {
-
+    ///指定动态库的加载路径
+    static String libraryPath;
     static final String[] FFMPEG_LIBRARIES = {"avutil", "swscale", "swresample", "avcodec", "avformat", "avfilter", "avdevice"};
 
     static final String[] LIBRARIES_LINKED_WITH_CXX = {"chromaprint", "openh264", "rubberband", "snappy", "srt", "tesseract", "x265", "zimg", "libilbc"};
@@ -42,10 +43,19 @@ public class NativeLoader {
         return (System.getProperty("enable.ffmpeg.kit.test.mode") == null);
     }
 
+
+    public static void setLibraryPath(String path) {
+        libraryPath = path;
+    }
     private static void loadLibrary(final String libraryName) {
         if (isTestModeDisabled()) {
             try {
-                System.loadLibrary(libraryName);
+                if (libraryPath != null) {
+                    System.load(libraryPath + "/lib" + libraryName + ".so");
+                } else {
+                    System.loadLibrary(libraryName);
+                }
+
             } catch (final UnsatisfiedLinkError e) {
                 throw new Error(String.format("FFmpegKit failed to start on %s.", getDeviceDebugInformation()), e);
             }
